@@ -23,7 +23,7 @@ const displayData = categories => {
 
 const category = (id) => {
     const url = `https://openapi.programming-hero.com/api/news/category/0${id}`
-    console.log(url);
+    //console.log(url);
 
     fetch(url)
         .then(res => res.json())
@@ -35,7 +35,7 @@ const showCategoryDetail = (datas) => {
     const categoryListDivData = document.getElementById('category-list');
     categoryListDivData.innerHTML = ``;
     datas.forEach(data => {
-        console.log(data);
+        //console.log(data);
         const cateDiv = document.createElement('div');
         cateDiv.classList.add('mb-4')
         cateDiv.innerHTML = `
@@ -60,7 +60,7 @@ const showCategoryDetail = (datas) => {
                         <i class="fa-regular fa-eye ml-40 text-1xl"></i>
                         <h3 class="font-bold ml-3">${data.total_view}</h3>
                         <div class="card-actions justify-end">
-                            <button class="btn btn-primary ml-60" onclick="newsDetail('${data._id}')">Watch</button>
+                        <label for="my-modal-3" class="btn btn-primary modal-button ml-60">Show Details</label>
                         </div>
                     </div>
                     
@@ -71,8 +71,15 @@ const showCategoryDetail = (datas) => {
     })
 }
 
-function newsDetail(newsId) {
-    console.log(newsId);
+const newsDetail = newsId => {
+    const url = `https://openapi.programming-hero.com/api/news/${newsId}`
+    fetch(url)
+        .then(res => res.json())
+        .then(data => display(data))
+}
+
+function display() {
+
 }
 
 loadData();
