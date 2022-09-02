@@ -60,7 +60,7 @@ const showCategoryDetail = (datas) => {
                         <i class="fa-regular fa-eye ml-40 text-1xl"></i>
                         <h3 class="font-bold ml-3">${data.total_view}</h3>
                         <div class="card-actions justify-end">
-                        <label for="my-modal-3" class="btn btn-primary modal-button ml-60">Show Details</label>
+                        <label for="my-modal-3" class="btn btn-primary modal-button ml-60" onclick="newsDetail('${data._id}')">Show Details</label>
                         </div>
                     </div>
                     
@@ -75,11 +75,21 @@ const newsDetail = newsId => {
     const url = `https://openapi.programming-hero.com/api/news/${newsId}`
     fetch(url)
         .then(res => res.json())
-        .then(data => display(data))
+        .then(data => displayNews(data.data))
 }
 
-function display() {
+const displayNews = news => {
+    const modalcontainer = document.getElementById('modal-container');
+    modalcontainer.innerHTML = ``;
+    news.forEach(data => {
+        console.log(data);
+        modalcontainer.innerHTML = `
+        <h3 class="text-lg font-bold">Title: ${data.title ? data.title : 'None'}</h3>
+        <h3 class="text-lg font-bold">Name: ${data.author.name ? data.author.name : 'None'}</h3>
+        <img src="${data.image_url ? data.image_url : 'None'}"/>
+        `;
 
+    })
 }
 
 loadData();
