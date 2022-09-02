@@ -57,17 +57,22 @@ const showCategoryDetail = (datas) => {
                             <h3 class="font-bold">${data.author.name}</h3>
                             <p> ${data.author.published_date}</p>
                         </div>
-                    
                         <i class="fa-regular fa-eye ml-40 text-1xl"></i>
                         <h3 class="font-bold ml-3">${data.total_view}</h3>
-                        
-                        
+                        <div class="card-actions justify-end">
+                            <button class="btn btn-primary ml-60" onclick="newsDetail('${data._id}')">Watch</button>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         `;
         categoryListDivData.appendChild(cateDiv);
     })
+}
+
+function newsDetail(newsId) {
+    console.log(newsId);
 }
 
 loadData();
