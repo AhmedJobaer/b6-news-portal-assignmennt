@@ -39,16 +39,32 @@ const showCategoryDetail = (datas) => {
         const cateDiv = document.createElement('div');
         cateDiv.classList.add('mb-4')
         cateDiv.innerHTML = `
-            <div class="card card-side bg-base-100 shadow-xl">
-            <figure><img src="${data.thumbnail_url}"></figure>
-            <div class="card-body">
-                <h2 class="card-title">New movie is released!</h2>
-                <p>Click the button to watch on Jetflix app.</p>
-                <div class="card-actions justify-end">
-                    <button class="btn btn-primary">Watch</button>
+            <div class="card card-side bg-base-100  shadow-xl">
+                <figure ><img class="w-72 h-80" src="${data.thumbnail_url}"></figure>
+                <div class="card-body">
+                    <h2 class="card-title">${data.title}</h2>
+                    <p>${data.details.slice(0, 250)}</p>
+                    <p>${data.details.slice(250, 450)}</p>
+                    <div class="flex items-center">
+                        <div class="avatar-group -space-x-6 mr-2">
+                            <div class="avatar">
+                                <div class="w-12">
+                                    <img src="${data.author.img}"/>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-bold">${data.author.name}</h3>
+                            <p> ${data.author.published_date}</p>
+                        </div>
+                    
+                        <i class="fa-regular fa-eye ml-40 text-1xl"></i>
+                        <h3 class="font-bold ml-3">${data.total_view}</h3>
+                        
+                        
+                    </div>
                 </div>
             </div>
-        </div>
         `;
         categoryListDivData.appendChild(cateDiv);
     })
