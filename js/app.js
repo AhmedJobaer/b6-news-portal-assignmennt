@@ -34,6 +34,10 @@ const category = (id) => {
 const showCategoryDetail = (datas) => {
     const categoryListDivData = document.getElementById('category-list');
     categoryListDivData.innerHTML = ``;
+    const totalInfo = document.getElementById('total-info');
+    totalInfo.innerHTML = ``;
+    totalInfo.innerHTML = `<p class="bg-white text-1xl text-black rounded-lg m-5 p-4 font-bold">${datas.length ? datas.length : 'No'} items found for this category</p>`;
+    //console.log(datas);
     datas.forEach(data => {
         //console.log(data);
         const cateDiv = document.createElement('div');
