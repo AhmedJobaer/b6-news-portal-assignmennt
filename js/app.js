@@ -42,32 +42,32 @@ const showCategoryDetail = (datas) => {
     totalInfo.innerHTML = `<p class="bg-white text-1xl text-black rounded-lg m-5 p-4 font-bold">${datas.length ? datas.length : 'No'} items found for this category</p>`;
     //console.log(datas);
     datas.forEach(data => {
-        //console.log(data);
+        console.log(data);
         const cateDiv = document.createElement('div');
         cateDiv.classList.add('mb-4')
         cateDiv.innerHTML = `
             <div class="card card-side bg-base-100  shadow-xl">
-                <figure ><img class="w-72 h-80" src="${data.thumbnail_url ? data.thumbnail_url : 'No Thumnail_Image Found'}"></figure>
+                <figure ><img class="w-72 h-80" src="${data.thumbnail_url ? data.thumbnail_url : 'No Thumnail_Image Data Found'}"></figure>
                 <div class="card-body">
-                    // <h2 class="card-title">${data.title ? data.title : 'No title Found'}</h2>
+                    // <h2 class="card-title">${data.title ? data.title : 'No title Data Found'}</h2>
                     <p>${data.details.slice(0, 250)}</p>
                     <p>${data.details.slice(250, 450)}...</p>
                     <div class="flex items-center">
                         <div class="avatar-group -space-x-6 mr-2">
                             <div class="avatar">
                                 <div class="w-12">
-                                    <img src="${data.author.img ? data.author.img : 'No Author Image Found'}"/>
+                                    <img src="${data.author.img ? data.author.img : 'No Author Image Data Found'}"/>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <h3 class="font-bold">${data.author.name ? data.author.name : 'No Name Found'}</h3>
-                            <p> ${data.author.published_date ? data.author.published_date : 'No Date Found'}</p>
+                            <h3 class="font-bold">${data.author.name ? data.author.name : 'No Data Found'}</h3>
+                            <p> ${data.author.published_date ? data.author.published_date : 'No Data Found'}</p>
                         </div>
                         <i class="fa-regular fa-eye ml-40 text-1xl"></i>
-                        <h3 class="font-bold ml-3">${data.total_view ? data.total_view : 'No Views Found'}</h3>
+                        <h3 class="font-bold ml-3">${data.total_view ? data.total_view : 'No Data Found'}</h3>
                         <div class="card-actions justify-end">
-                        <label for="my-modal-3" class="btn btn-primary modal-button ml-60" onclick="newsDetail('${data._id ? data._id : 'No Id Found'}')">Show Details</label>
+                            <label for="my-modal-3" class="btn btn-primary modal-button ml-60" onclick="newsDetail('${data._id ? data._id : 'No Data Found'}')">Show Details</label>
                         </div>
                     </div>
                     
@@ -103,11 +103,15 @@ const displayNews = news => {
     const modalcontainer = document.getElementById('modal-container');
     modalcontainer.innerHTML = ``;
     news.forEach(data => {
-        console.log(data);
+        //console.log(data);
         modalcontainer.innerHTML = `
-        <h3 class="text-lg font-bold">Title: ${data.title ? data.title : 'No Tile Found'}</h3>
-        <h3 class="text-lg font-bold">Name: ${data.author.name ? data.author.name : 'No Name Found'}</h3>
-        <img src="${data.image_url ? data.image_url : 'No Image Found'}"/>
+        <h3 class="text-lg font-bold">Title: ${data.title ? data.title : 'No Data Found'}</h3>
+        <h3 class="text-lg font-bold">Name: ${data.author.name ? data.author.name : 'No Data Found'}</h3>
+        <p>Publish Date : ${data.author.published_date ? data.author.published_date : 'No data Found'}</p>
+        <p>Rating Number : ${data.rating.number ? data.rating.number : 'No data Found'}</p>
+        <p>Rating Badge : ${data.rating.badge ? data.rating.badge : 'No data Found'}</p>
+        <p>Total Views : ${data.total_view ? data.total_view : 'No data Found'}</p>
+        <img src="${data.image_url ? data.image_url : 'No Data Found'}"/>
         `;
 
     })
