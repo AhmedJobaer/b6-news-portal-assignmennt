@@ -1,3 +1,4 @@
+//load categories
 const loadData = () => {
     const url = `https://openapi.programming-hero.com/api/news/categories`
     fetch(url)
@@ -6,6 +7,7 @@ const loadData = () => {
         .catch(error => console.log(error))
 }
 
+//display categries
 const displayData = categories => {
     //console.log(categories);
     const categoryDiv = document.getElementById('category-link');
@@ -22,7 +24,10 @@ const displayData = categories => {
 
 }
 
+
+//load individual category data
 const category = (id) => {
+    //spinner stars before loding data
     toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/0${id}`
     //console.log(url);
@@ -35,7 +40,7 @@ const category = (id) => {
 }
 
 
-
+//Display individulal category data as a card
 const showCategoryDetail = (datas) => {
     const categoryListDivData = document.getElementById('category-list');
     categoryListDivData.innerHTML = ``;
@@ -43,6 +48,7 @@ const showCategoryDetail = (datas) => {
     totalInfo.innerHTML = ``;
     totalInfo.innerHTML = `<p class="bg-white text-1xl text-black rounded-lg m-5 p-4 font-bold">${datas.length ? datas.length : 'No'} items found for this category</p>`;
 
+    //sorting array by views number
     datas.sort(function (a, b) {
         return b.total_view - a.total_view
     });
@@ -82,11 +88,12 @@ const showCategoryDetail = (datas) => {
         `;
         categoryListDivData.appendChild(cateDiv);
     })
-
+    //spinner ends after displaying dta data
     toggleSpinner(false)
 }
 
 
+//spinner function
 const toggleSpinner = isLoading => {
     const loaderSec = document.getElementById('loader');
     if (isLoading) {
@@ -97,6 +104,7 @@ const toggleSpinner = isLoading => {
     }
 }
 
+//load data for modal
 const newsDetail = newsId => {
     const url = `https://openapi.programming-hero.com/api/news/${newsId}`
     fetch(url)
@@ -105,6 +113,7 @@ const newsDetail = newsId => {
         .catch(error => console.log(error))
 }
 
+//display data by modal
 const displayNews = news => {
     const modalcontainer = document.getElementById('modal-container');
     modalcontainer.innerHTML = ``;
@@ -123,5 +132,8 @@ const displayNews = news => {
     })
 }
 
+//show all category by default
 category('8');
+
+//Lodaing data
 loadData();
