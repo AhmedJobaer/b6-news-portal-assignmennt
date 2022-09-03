@@ -47,27 +47,27 @@ const showCategoryDetail = (datas) => {
         cateDiv.classList.add('mb-4')
         cateDiv.innerHTML = `
             <div class="card card-side bg-base-100  shadow-xl">
-                <figure ><img class="w-72 h-80" src="${data.thumbnail_url ? data.thumbnail_url : 'No Thumnail_Image'}"></figure>
+                <figure ><img class="w-72 h-80" src="${data.thumbnail_url ? data.thumbnail_url : 'No Thumnail_Image Found'}"></figure>
                 <div class="card-body">
-                    <h2 class="card-title">${data.title}</h2>
+                    // <h2 class="card-title">${data.title ? data.title : 'No title Found'}</h2>
                     <p>${data.details.slice(0, 250)}</p>
                     <p>${data.details.slice(250, 450)}...</p>
                     <div class="flex items-center">
                         <div class="avatar-group -space-x-6 mr-2">
                             <div class="avatar">
                                 <div class="w-12">
-                                    <img src="${data.author.img}"/>
+                                    <img src="${data.author.img ? data.author.img : 'No Author Image Found'}"/>
                                 </div>
                             </div>
                         </div>
                         <div>
-                            <h3 class="font-bold">${data.author.name ? data.author.name : 'No Name'}</h3>
-                            <p> ${data.author.published_date ? data.author.published_date : 'Invalid Date or Time'}</p>
+                            <h3 class="font-bold">${data.author.name ? data.author.name : 'No Name Found'}</h3>
+                            <p> ${data.author.published_date ? data.author.published_date : 'No Date Found'}</p>
                         </div>
                         <i class="fa-regular fa-eye ml-40 text-1xl"></i>
-                        <h3 class="font-bold ml-3">${data.total_view ? data.total_view : 'No Views'}</h3>
+                        <h3 class="font-bold ml-3">${data.total_view ? data.total_view : 'No Views Found'}</h3>
                         <div class="card-actions justify-end">
-                        <label for="my-modal-3" class="btn btn-primary modal-button ml-60" onclick="newsDetail('${data._id}')">Show Details</label>
+                        <label for="my-modal-3" class="btn btn-primary modal-button ml-60" onclick="newsDetail('${data._id ? data._id : 'No Id Found'}')">Show Details</label>
                         </div>
                     </div>
                     
@@ -105,9 +105,9 @@ const displayNews = news => {
     news.forEach(data => {
         console.log(data);
         modalcontainer.innerHTML = `
-        <h3 class="text-lg font-bold">Title: ${data.title ? data.title : 'None'}</h3>
-        <h3 class="text-lg font-bold">Name: ${data.author.name ? data.author.name : 'None'}</h3>
-        <img src="${data.image_url ? data.image_url : 'None'}"/>
+        <h3 class="text-lg font-bold">Title: ${data.title ? data.title : 'No Tile Found'}</h3>
+        <h3 class="text-lg font-bold">Name: ${data.author.name ? data.author.name : 'No Name Found'}</h3>
+        <img src="${data.image_url ? data.image_url : 'No Image Found'}"/>
         `;
 
     })
