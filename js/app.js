@@ -51,7 +51,7 @@ const showCategoryDetail = (datas) => {
                 <div class="card-body">
                     <h2 class="card-title">${data.title}</h2>
                     <p>${data.details.slice(0, 250)}</p>
-                    <p>${data.details.slice(250, 450)}</p>
+                    <p>${data.details.slice(250, 450)}...</p>
                     <div class="flex items-center">
                         <div class="avatar-group -space-x-6 mr-2">
                             <div class="avatar">
@@ -61,11 +61,11 @@ const showCategoryDetail = (datas) => {
                             </div>
                         </div>
                         <div>
-                            <h3 class="font-bold">${data.author.name}</h3>
-                            <p> ${data.author.published_date}</p>
+                            <h3 class="font-bold">${data.author.name ? data.author.name : 'No Name'}</h3>
+                            <p> ${data.author.published_date ? data.author.published_date : 'Invalid Date or Time'}</p>
                         </div>
                         <i class="fa-regular fa-eye ml-40 text-1xl"></i>
-                        <h3 class="font-bold ml-3">${data.total_view}</h3>
+                        <h3 class="font-bold ml-3">${data.total_view ? data.total_view : 'No Views'}</h3>
                         <div class="card-actions justify-end">
                         <label for="my-modal-3" class="btn btn-primary modal-button ml-60" onclick="newsDetail('${data._id}')">Show Details</label>
                         </div>
@@ -113,4 +113,5 @@ const displayNews = news => {
     })
 }
 
+category('8');
 loadData();
