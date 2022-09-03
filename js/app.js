@@ -22,8 +22,9 @@ const displayData = categories => {
 }
 
 const category = (id) => {
+    toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/0${id}`
-    //console.log(url);
+    console.log(url);
 
     fetch(url)
         .then(res => res.json())
@@ -73,6 +74,19 @@ const showCategoryDetail = (datas) => {
         `;
         categoryListDivData.appendChild(cateDiv);
     })
+
+    toggleSpinner(false)
+}
+
+
+const toggleSpinner = isLoading => {
+    const loaderSec = document.getElementById('loader');
+    if (isLoading) {
+        loaderSec.classList.remove('hidden');
+    }
+    else {
+        loaderSec.classList.add('hidden');
+    }
 }
 
 const newsDetail = newsId => {
