@@ -3,6 +3,7 @@ const loadData = () => {
     fetch(url)
         .then(res => res.json())
         .then(data => displayData(data.data.news_category))
+        .catch(error => console.log(error))
 }
 
 const displayData = categories => {
@@ -24,11 +25,12 @@ const displayData = categories => {
 const category = (id) => {
     toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/0${id}`
-    console.log(url);
+    //console.log(url);
 
     fetch(url)
         .then(res => res.json())
         .then(data => showCategoryDetail(data.data))
+        .catch(error => console.log(error))
 
 }
 
@@ -45,7 +47,7 @@ const showCategoryDetail = (datas) => {
         cateDiv.classList.add('mb-4')
         cateDiv.innerHTML = `
             <div class="card card-side bg-base-100  shadow-xl">
-                <figure ><img class="w-72 h-80" src="${data.thumbnail_url}"></figure>
+                <figure ><img class="w-72 h-80" src="${data.thumbnail_url ? data.thumbnail_url : 'No Thumnail_Image'}"></figure>
                 <div class="card-body">
                     <h2 class="card-title">${data.title}</h2>
                     <p>${data.details.slice(0, 250)}</p>
@@ -94,6 +96,7 @@ const newsDetail = newsId => {
     fetch(url)
         .then(res => res.json())
         .then(data => displayNews(data.data))
+        .catch(error => console.log(error))
 }
 
 const displayNews = news => {
