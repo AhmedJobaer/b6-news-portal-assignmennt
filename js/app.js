@@ -62,8 +62,7 @@ const showCategoryDetail = (datas) => {
                 <figure ><img class="lg:w-72 lg:h-80 w-fit" src="${data.thumbnail_url ? data.thumbnail_url : 'No Thumnail_Image Data Found'}"></figure>
                 <div class="card-body">
                     <h2 class="card-title">${data.title ? data.title : 'No title Data Found'}</h2>
-                    <p>${data.details.slice(0, 250)}</p>
-                    <p>${data.details.slice(250, 450)}...</p>
+                    <p class="text-ellipsis overflow-hidden ...">${data.details.slice(0, 600)}...</p>
                     <div class="flex items-center lg:flex-row flex-col">
                         <div class="avatar-group -space-x-6 mr-2">
                             <div class="avatar">
